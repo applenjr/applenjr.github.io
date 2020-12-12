@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text</title>
+    <title>NJR10byh Tutu</title>
     <link rel="stylesheet" href="njr10byh.css" />
     <!-- 引入jquery -->
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
@@ -22,31 +22,58 @@
           </div>
           <div class="user">
             <div class="username">
-              <input type="text" placeholder="请输入姓名" />
+              <input id="name" type="text" placeholder="请输入姓名" value="" />
             </div>
             <div class="password">
-              <input type="text" placeholder="请输入准考证号" />
+              <input
+                id="number"
+                type="text"
+                placeholder="请输入准考证号"
+                value=""
+              />
             </div>
             <button onclick="Search()">查询</button>
           </div>
         </div>
-        <div class="part2"></div>
+        <div class="part2">
+          <div class="part2box">
+            <p id="username"></p>
+            <p id="usernumber"></p>
+            <p id="userclassroomnumber"></p>
+            <p id="userclassroom"></p>
+          </div>
+        </div>
       </div>
     </div>
   </body>
-  <script type="text/javascript">
+  <script>
     var res = "";
     function test(result) {
-      console.log(window.innerHeight);
-      console.log(window.innerWidth);
       //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
       //不然无法获取到对应的文件
       // console.log(result); //打印 indexDemo.json 中的数据
       res = result;
-      console.log(res);
     }
     function Search() {
-      console.log(res);
+      var Name = document.getElementById("name").value;
+      var Number = document.getElementById("number").value;
+
+      var Username = document.getElementById("username");
+      var Usernumber = document.getElementById("usernumber");
+      var Userclassroomnumber = document.getElementById("userclassroomnumber");
+      var Userclassroom = document.getElementById("userclassroom");
+
+      // console.log(res[0]);
+      // console.log(res.length);
+      for (i = 0; i < res.length; i++) {
+        if (res[i].考生姓名 == Name && res[i].考生编号 == Number) {
+          // console.log(i);
+          Username.innerHTML = "考生姓名: " + res[i].考生姓名;
+          Usernumber.innerHTML = "考生编号: " + res[i].考生编号;
+          Userclassroomnumber.innerHTML = "考场号: " + res[i].考场号;
+          Userclassroom.innerHTML = "教室号: " + res[i].教室号;
+        }
+      }
     }
   </script>
   <script type="text/javascript" src="data.json?callback=test"></script>
