@@ -22,14 +22,19 @@
           </div>
           <div class="user">
             <div class="username">
-              <input id="name" type="text" placeholder="请输入姓名" value="" />
+              <input
+                id="name"
+                type="text"
+                placeholder="请输入姓名"
+                value="王三"
+              />
             </div>
             <div class="password">
               <input
                 id="number"
                 type="text"
                 placeholder="请输入准考证号"
-                value=""
+                value="102930210107892"
               />
             </div>
             <button onclick="Search()">查询</button>
@@ -37,6 +42,10 @@
         </div>
         <div class="part2">
           <div class="part2box">
+            <p id="errorinfo" class="Cuo"></p>
+            <p id="errorname" class="Cuo"></p>
+            <p id="errornumber" class="Cuo"></p>
+            <p id="error" class="Cuo"></p>
             <p id="username"></p>
             <p id="usernumber"></p>
             <p id="userclassroomnumber"></p>
@@ -55,23 +64,77 @@
       res = result;
     }
     function Search() {
+      // 考生输入信息
       var Name = document.getElementById("name").value;
       var Number = document.getElementById("number").value;
 
+      // 反馈考生错误信息
+      var Errorinfo = document.getElementById("errorinfo");
+      var Errorname = document.getElementById("errorname");
+      var Errornumber = document.getElementById("errornumber");
+      var Error = document.getElementById("error");
+
+      // 反馈考生正确信息
       var Username = document.getElementById("username");
       var Usernumber = document.getElementById("usernumber");
       var Userclassroomnumber = document.getElementById("userclassroomnumber");
       var Userclassroom = document.getElementById("userclassroom");
 
-      // console.log(res[0]);
-      // console.log(res.length);
-      for (i = 0; i < res.length; i++) {
-        if (res[i].考生姓名 == Name && res[i].考生编号 == Number) {
-          // console.log(i);
-          Username.innerHTML = "考生姓名: " + res[i].考生姓名;
-          Usernumber.innerHTML = "考生编号: " + res[i].考生编号;
-          Userclassroomnumber.innerHTML = "考场号: " + res[i].考场号;
-          Userclassroom.innerHTML = "教室号: " + res[i].教室号;
+      if (Name == "" || Number == "") {
+        if (Name == "" && Number == "") {
+          Errorinfo.innerHTML = "请填写考生姓名和准考证号! ";
+          Errorname.innerHTML = "";
+          Errornumber.innerHTML = "";
+          Error.innerHTML = "";
+          Username.innerHTML = "";
+          Usernumber.innerHTML = "";
+          Userclassroomnumber.innerHTML = "";
+          Userclassroom.innerHTML = "";
+        } else if (Name == "") {
+          Errorinfo.innerHTML = "";
+          Errorname.innerHTML = "请填写考生姓名! ";
+          Errornumber.innerHTML = "";
+          Error.innerHTML = "";
+          Username.innerHTML = "";
+          Usernumber.innerHTML = "";
+          Userclassroomnumber.innerHTML = "";
+          Userclassroom.innerHTML = "";
+        } else if (Number == "") {
+          Errorinfo.innerHTML = "";
+          Errorname.innerHTML = "";
+          Errornumber.innerHTML = "请填写准考证号! ";
+          Error.innerHTML = "";
+          Username.innerHTML = "";
+          Usernumber.innerHTML = "";
+          Userclassroomnumber.innerHTML = "";
+          Userclassroom.innerHTML = "";
+        }
+      } else if (Name != "" && Number != "") {
+        // console.log(res[0]);
+        // console.log(res.length);
+        for (i = 0; i < res.length; i++) {
+          if (res[i].考生姓名 == Name && res[i].考生编号 == Number) {
+            // console.log(i);
+            Errorinfo.innerHTML = "";
+            Errorname.innerHTML = "";
+            Errornumber.innerHTML = "";
+            Error.innerHTML = "";
+            Username.innerHTML = "考生姓名: " + res[i].考生姓名;
+            Usernumber.innerHTML = "考生编号: " + res[i].考生编号;
+            Userclassroomnumber.innerHTML = "考场号: " + res[i].考场号;
+            Userclassroom.innerHTML = "教室号: " + res[i].教室号;
+            break;
+          }
+        }
+        if (i == 6) {
+          Errorinfo.innerHTML = "";
+          Errorname.innerHTML = "";
+          Errornumber.innerHTML = "";
+          Error.innerHTML = "未找到相关信息";
+          Username.innerHTML = "";
+          Usernumber.innerHTML = "";
+          Userclassroomnumber.innerHTML = "";
+          Userclassroom.innerHTML = "";
         }
       }
     }
