@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  font-size: 25px;
+  font-size: 18px;
 }
 .container .box {
   /* border: 1px solid red; */
@@ -90,33 +90,57 @@
 }
 .container .box .part2 {
   /* border: 1px solid red; */
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   margin-top: 30px;
 }
 .container .box .part2 .part2box {
   /* border: 1px solid red; */
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
+  align-items: center;
 }
-.container .box .part2 .part2box p {
-  margin-top: 5px;
-  font-size: 20px;
+.container .box .part2 .part2box .part2boxinfo {
+  width: 90%;
+}
+.container .box .part2 .part2box .part2boxinfo-active {
+  border: 2px solid #e1b12c;
+  border-radius: 10px;
+  padding: 10px;
+  width: 80%;
+}
+.container .box .part2 .part2box .part2boxinfo-active #username,
+#usernumber,
+#userclassroomnumber,
+#userclassroom {
+  font-size: 15px;
+  font-weight: 300;
+}
+.container .box .part2 .part2box .part2boxinfo-active #usernameSpan,
+#usernumberSpan {
+  margin-left: 5px;
+  font-size: 16px;
   font-weight: bold;
 }
-.container .box .part2 .part2box .Cuo {
-  width: 80%;
+.container .box .part2 .part2box .part2boxinfo-active #userclassroomnumberSpan,
+#userclassroomSpan {
+  margin-left: 20px;
+  font-size: 25px;
+  color: red;
+  font-weight: bold;
+}
+.container .box .part2 .part2box .part2boxinfo .Cuo {
+  width: 100%;
   display: flex;
   align-self: center;
   justify-content: center;
-  font-size: 15px;
   color: red;
 }
-.container .box .part2 .part2box #errorinfo {
-  width: 100%;
+.container .box .part2 .part2box #tips {
+  margin-top: 10px;
+  font-size: 15px;
 }
