@@ -105,7 +105,18 @@
   justify-content: center;
 }
 .container .box .part2 .part2box p {
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 20px;
   font-weight: bold;
+}
+.container .box .part2 .part2box .Cuo {
+  width: 80%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  font-size: 15px;
+  color: red;
+}
+.container .box .part2 .part2box #errorinfo {
+  width: 100%;
 }
