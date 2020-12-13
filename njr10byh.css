@@ -97,7 +97,7 @@
   margin-top: 30px;
 }
 .container .box .part2 .part2box {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -140,6 +140,7 @@
   align-self: center;
   justify-content: center;
   color: red;
+  margin-top: 6px;
 }
 .container .box .part2 .part2box #tips {
   font-size: 15px;
