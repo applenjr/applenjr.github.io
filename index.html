@@ -42,6 +42,11 @@
         </div>
         <div class="part2">
           <div class="part2box">
+            <div id="tips">
+              <span id="tipsinfo"
+                >温馨提示: 请考生们务必核对好自己的个人信息，以免走错考场!
+              </span>
+            </div>
             <div class="part2boxinfo" id="Part2boxinfo">
               <p id="errorinfo" class="Cuo"></p>
               <p id="errorname" class="Cuo"></p>
@@ -54,9 +59,6 @@
               ><span id="userclassroomnumberSpan"></span><br />
               <span id="userclassroom"></span
               ><span id="userclassroomSpan"></span>
-            </div>
-            <div id="tips">
-              <span id="tipsinfo"></span>
             </div>
           </div>
         </div>
@@ -168,8 +170,6 @@
             UserclassroomnumberSpan.innerHTML = res[i].考场号;
             Userclassroom.innerHTML = "教室号: ";
             UserclassroomSpan.innerHTML = res[i].教室号;
-            Tipsinfo.innerHTML =
-              "温馨提示: 请考生们务必核对好自己的个人信息，以免走错考场！";
             break;
           }
         }
