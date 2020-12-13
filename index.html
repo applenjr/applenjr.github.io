@@ -26,7 +26,7 @@
                 id="name"
                 type="text"
                 placeholder="请输入姓名"
-                value=""
+                value="网络技术与应用"
               />
             </div>
             <div class="password">
@@ -34,7 +34,7 @@
                 id="number"
                 type="text"
                 placeholder="请输入准考证号"
-                value=""
+                value="B19020202"
               />
             </div>
             <button onclick="Search()">查询</button>
@@ -57,10 +57,18 @@
   </body>
   <script>
     var res = "";
-    function test(result) {
+    // function test(result) {
+    //   //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+    //   //不然无法获取到对应的文件
+    //   // console.log(result); //打印 indexDemo.json 中的数据
+    //   res = result;
+    // }
+
+    // BigData-test
+    function bigdata(result) {
       //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
       //不然无法获取到对应的文件
-      // console.log(result); //打印 indexDemo.json 中的数据
+      console.log(result); //打印 indexDemo.json 中的数据
       res = result;
     }
     function Search() {
@@ -80,6 +88,7 @@
       var Userclassroomnumber = document.getElementById("userclassroomnumber");
       var Userclassroom = document.getElementById("userclassroom");
 
+      // 考生搜索格式错误
       if (Name == "" || Number == "") {
         if (Name == "" && Number == "") {
           Errorinfo.innerHTML = "请填写考生姓名和准考证号! ";
@@ -109,24 +118,56 @@
           Userclassroomnumber.innerHTML = "";
           Userclassroom.innerHTML = "";
         }
-      } else if (Name != "" && Number != "") {
+      }
+      // 考生搜索格式正确
+      // else if (Name != "" && Number != "") {
+      //   // console.log(res[0]);
+      //   // console.log(res.length);
+      //   for (i = 0; i < res.length; i++) {
+      //     if (res[i].考生姓名 == Name && res[i].考生编号 == Number) {
+      //       // console.log(i);
+      //       Errorinfo.innerHTML = "";
+      //       Errorname.innerHTML = "";
+      //       Errornumber.innerHTML = "";
+      //       Error.innerHTML = "";
+      //       Username.innerHTML = "考生姓名: " + res[i].考生姓名;
+      //       Usernumber.innerHTML = "考生编号: " + res[i].考生编号;
+      //       Userclassroomnumber.innerHTML = "考场号: " + res[i].考场号;
+      //       Userclassroom.innerHTML = "教室号: " + res[i].教室号;
+      //       break;
+      //     }
+      //   }
+      //   if (i == 6) {
+      //     Errorinfo.innerHTML = "";
+      //     Errorname.innerHTML = "";
+      //     Errornumber.innerHTML = "";
+      //     Error.innerHTML = "未找到相关信息";
+      //     Username.innerHTML = "";
+      //     Usernumber.innerHTML = "";
+      //     Userclassroomnumber.innerHTML = "";
+      //     Userclassroom.innerHTML = "";
+      //   }
+      // }
+
+      // BigData-test
+      else if (Name != "" && Number != "") {
         // console.log(res[0]);
         // console.log(res.length);
         for (i = 0; i < res.length; i++) {
-          if (res[i].考生姓名 == Name && res[i].考生编号 == Number) {
-            // console.log(i);
+          if (res[i].课程名称之 == Name && res[i].学号 == Number) {
+            console.log(i);
             Errorinfo.innerHTML = "";
             Errorname.innerHTML = "";
             Errornumber.innerHTML = "";
             Error.innerHTML = "";
-            Username.innerHTML = "考生姓名: " + res[i].考生姓名;
-            Usernumber.innerHTML = "考生编号: " + res[i].考生编号;
-            Userclassroomnumber.innerHTML = "考场号: " + res[i].考场号;
-            Userclassroom.innerHTML = "教室号: " + res[i].教室号;
+            Username.innerHTML = "课程名称: " + res[i].课程名称之;
+            Usernumber.innerHTML = "学号: " + res[i].学号;
+            Userclassroomnumber.innerHTML = "考试时间: " + res[i].考试时间;
+            Userclassroom.innerHTML = "考试地点: " + res[i].考试地点;
             break;
           }
         }
-        if (i == 6) {
+        if (i == 10043) {
           Errorinfo.innerHTML = "";
           Errorname.innerHTML = "";
           Errornumber.innerHTML = "";
@@ -139,5 +180,8 @@
       }
     }
   </script>
-  <script type="text/javascript" src="data.json?callback=test"></script>
+  <script
+    type="text/javascript"
+    src="BigData-test.json?callback=bigdata"
+  ></script>
 </html>
