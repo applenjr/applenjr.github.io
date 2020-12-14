@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NJR10byh Tutu</title>
     <link rel="stylesheet" href="njr10byh.css" />
-    <!-- 引入jquery -->
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="njr10byh.js"></script>
   </head>
 
   <body>
@@ -26,7 +25,7 @@
                 id="name"
                 type="text"
                 placeholder="请输入姓名"
-                value=""
+                value="王三"
               />
             </div>
             <div class="password">
@@ -34,7 +33,7 @@
                 id="number"
                 type="text"
                 placeholder="请输入准考证号"
-                value=""
+                value="102930210107892"
               />
             </div>
             <button onclick="Search()">查询</button>
@@ -65,153 +64,9 @@
       </div>
     </div>
   </body>
-  <script>
-    var res = "";
-
-    function test(result) {
-      //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
-      //不然无法获取到对应的文件
-      console.log(result); //打印 indexDemo.json 中的数据
-      res = result;
-    }
-
-    // BigData-test
-    // function bigdata(result) {
-    //   //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
-    //   //不然无法获取到对应的文件
-    //   console.log(result); //打印 indexDemo.json 中的数据
-    //   res = result;
-    // }
-
-    // 重置信息显示模块
-    function Clear() {
-      // 反馈考生错误信息
-      var Errorinfo = document.getElementById("errorinfo");
-      var Errorname = document.getElementById("errorname");
-      var Errornumber = document.getElementById("errornumber");
-      var Error = document.getElementById("error");
-
-      // 反馈考生正确信息
-      var Username = document.getElementById("username");
-      var Usernumber = document.getElementById("usernumber");
-      var Userclassroomnumber = document.getElementById("userclassroomnumber");
-      var Userclassroom = document.getElementById("userclassroom");
-      var UsernameSpan = document.getElementById("usernameSpan");
-      var UsernumberSpan = document.getElementById("usernumberSpan");
-      var UserclassroomnumberSpan = document.getElementById(
-        "userclassroomnumberSpan"
-      );
-      var UserclassroomSpan = document.getElementById("userclassroomSpan");
-      Errorinfo.innerHTML = "";
-      Errorname.innerHTML = "";
-      Errornumber.innerHTML = "";
-      Error.innerHTML = "";
-      Username.innerHTML = "";
-      Usernumber.innerHTML = "";
-      Userclassroomnumber.innerHTML = "";
-      Userclassroom.innerHTML = "";
-      UsernameSpan.innerHTML = "";
-      UsernumberSpan.innerHTML = "";
-      UserclassroomnumberSpan.innerHTML = "";
-      UserclassroomSpan.innerHTML = "";
-    }
-    function Search() {
-      document.getElementById("Part2boxinfo").className = "part2boxinfo";
-
-      // 考生输入信息
-      var Name = document.getElementById("name").value;
-      var Number = document.getElementById("number").value;
-
-      // 反馈考生错误信息
-      var Errorinfo = document.getElementById("errorinfo");
-      var Errorname = document.getElementById("errorname");
-      var Errornumber = document.getElementById("errornumber");
-      var Error = document.getElementById("error");
-
-      // 反馈考生正确信息
-      var Username = document.getElementById("username");
-      var Usernumber = document.getElementById("usernumber");
-      var Userclassroomnumber = document.getElementById("userclassroomnumber");
-      var Userclassroom = document.getElementById("userclassroom");
-      var UsernameSpan = document.getElementById("usernameSpan");
-      var UsernumberSpan = document.getElementById("usernumberSpan");
-      var UserclassroomnumberSpan = document.getElementById(
-        "userclassroomnumberSpan"
-      );
-      var UserclassroomSpan = document.getElementById("userclassroomSpan");
-      var Tipsinfo = document.getElementById("tipsinfo");
-
-      // 考生搜索格式错误
-      if (Name == "" || Number == "") {
-        if (Name == "" && Number == "") {
-          Clear();
-          Errorinfo.innerHTML = "请填写考生姓名和准考证号! ";
-        } else if (Name == "") {
-          Clear();
-          Errorname.innerHTML = "请填写考生姓名! ";
-        } else if (Number == "") {
-          Clear();
-          Errornumber.innerHTML = "请填写正确的准考证号! ";
-        }
-      }
-      // 考生搜索格式正确
-      else if (Name != "" && Number != "") {
-        // console.log(res[0]);
-        // console.log(res.length);
-        for (i = 0; i < res.length; i++) {
-          if (res[i].考生姓名 == Name && res[i].考生编号 == Number) {
-            // console.log(i);
-            Clear();
-            document.getElementById("Part2boxinfo").className =
-              "part2boxinfo-active";
-            Username.innerHTML = "考生姓名: ";
-            UsernameSpan.innerHTML = res[i].考生姓名;
-            Usernumber.innerHTML = "考生编号: ";
-            UsernumberSpan.innerHTML = res[i].考生编号;
-            Userclassroomnumber.innerHTML = "考场号: ";
-            UserclassroomnumberSpan.innerHTML = res[i].考场号;
-            Userclassroom.innerHTML = "教室号: ";
-            UserclassroomSpan.innerHTML = res[i].教室号;
-            break;
-          }
-        }
-        if (i == 6) {
-          Clear();
-          document.getElementById("Part2boxinfo").className = "part2boxinfo";
-          Error.innerHTML = "未找到相关信息";
-        }
-      }
-
-      // BigData-test
-      // else if (Name != "" && Number != "") {
-      //   // console.log(res[0]);
-      //   // console.log(res.length);
-      //   for (i = 0; i < res.length; i++) {
-      //     if (res[i].课程名称之 == Name && res[i].学号 == Number) {
-      //       // console.log(i);
-      //       Errorinfo.innerHTML = "";
-      //       Errorname.innerHTML = "";
-      //       Errornumber.innerHTML = "";
-      //       Error.innerHTML = "";
-      //       Username.innerHTML = "课程名称: " + res[i].课程名称之;
-      //       Usernumber.innerHTML = "学号: " + res[i].学号;
-      //       Userclassroomnumber.innerHTML = "考试时间: " + res[i].考试时间;
-      //       Userclassroom.innerHTML = "考试地点: " + res[i].考试地点;
-      //       break;
-      //     }
-      //   }
-      //   if (i == 10043) {
-      //     Errorinfo.innerHTML = "";
-      //     Errorname.innerHTML = "";
-      //     Errornumber.innerHTML = "";
-      //     Error.innerHTML = "未找到相关信息";
-      //     Username.innerHTML = "";
-      //     Usernumber.innerHTML = "";
-      //     Userclassroomnumber.innerHTML = "";
-      //     Userclassroom.innerHTML = "";
-      //   }
-      // }
-    }
-  </script>
   <script type="text/javascript" src="data.json?callback=test"></script>
+  <!-- <script
+    type="text/javascript"
+    src="BigData-test.json?callback=bigdata"
+  ></script> -->
 </html>
