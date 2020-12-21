@@ -1,206 +1,244 @@
 <!DOCTYPE html>
 <!-- saved from url=(0027)http://q.nuist.edu.cn/kyzw/ -->
 <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta lang="zh-cn" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width,user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"
+    />
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta lang="zh-cn">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport"
-        content="width=device-width,user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-
-    <title>
-        2021年研究生招生考试考场查询-NJUPT
-    </title>
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>2021年研究生招生考试考场查询-NJUPT</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
     <link rel="stylesheet" href="njr10byh.css" />
     <!-- <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <div class="container">
-            <div class="text">
-                <p>全国硕士研究生招生考试</p>
-                <p>南京邮电大学考点 (3226) 考场查询</p>
-            </div>
-            <div class="box">
-                <div class="part1">
-                    <div class="njuptlogo">
-                        <img src="./NJUPT.png" alt="NJUPT" width="120px" height="120px" />
-                    </div>
-                    <div class="user">
-                        <el-form :rules="rules" :label-position="labelPosition" :inline="true" label-width="80px"
-                            :model="ruleForm" ref="ruleForm">
-                            <div class="username">
-                                <div style="margin-bottom: 10px;text-align: left;">考生编号</div>
-                                <el-form-item  style="margin-bottom: 30px;" prop="number">
-                                    <!-- <el-input v-model="ruleForm.number" placeholder="请输入考生编号"></el-input> -->
-                                    <el-input v-model="ruleForm.number" ></el-input>
-                                </el-form-item>
-                            </div>
-                            <div class="password">
-                                <div style="margin-bottom: 10px; text-align: left;">考生姓名</div>
-                                <el-form-item  style="margin-bottom: 30px" prop="name" >
-                                    <!-- <el-input v-model="ruleForm.name" placeholder="请输入姓名"></el-input> -->
-                                    <el-input v-model="ruleForm.name" ></el-input>
-                                </el-form-item>
-                            </div>
-
-
-
-                            <div style="text-align: center;">
-                                <el-form-item>
-                                    <el-button round type="primary" @click="submitForm()">查询</el-button>
-                                </el-form-item>
-                            </div>
-
-
-                        </el-form>
-
-
-                    </div>
-                </div>
-                <div class="part2">
-                    <div class="part2box">
-                        <div id="tips">
-                            <span id="tipsinfo">温馨提示: 请考生们务必核对好自己的个人信息，以免走错考场!
-                            </span>
-                        </div>
-                        <div class="part2boxinfo" id="Part2boxinfo">
-                            <span id="username"></span><span id="usernameSpan"></span><br />
-                            <span id="usernumber"></span><span id="usernumberSpan"></span><br />
-                            <span id="userclassroomnumber"></span><span id="userclassroomnumberSpan"></span><br />
-                            <span id="userclassroom"></span><span id="userclassroomSpan"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="text">
+          <p>全国硕士研究生招生考试</p>
+          <p>南京邮电大学考点 (3226) 考场查询</p>
         </div>
+        <div class="box">
+          <div class="part1">
+            <div class="njuptlogo">
+              <img src="./NJUPT.png" alt="NJUPT" width="120px" height="120px" />
+            </div>
+            <div class="user">
+              <el-form
+                :rules="rules"
+                :label-position="labelPosition"
+                :inline="true"
+                label-width="80px"
+                :model="ruleForm"
+                ref="ruleForm"
+              >
+                <div class="username">
+                  <div style="margin-bottom: 10px; text-align: left">
+                    考生编号
+                  </div>
+                  <el-form-item style="margin-bottom: 30px" prop="number">
+                    <!-- <el-input v-model="ruleForm.number" placeholder="请输入考生编号"></el-input> -->
+                    <el-input v-model="ruleForm.number"></el-input>
+                  </el-form-item>
+                </div>
+                <div class="password">
+                  <div style="margin-bottom: 10px; text-align: left">
+                    考生姓名
+                  </div>
+                  <el-form-item style="margin-bottom: 30px" prop="name">
+                    <!-- <el-input v-model="ruleForm.name" placeholder="请输入姓名"></el-input> -->
+                    <el-input v-model="ruleForm.name"></el-input>
+                  </el-form-item>
+                </div>
+
+                <div style="text-align: center">
+                  <el-form-item>
+                    <el-button round type="primary" @click="submitForm()"
+                      >查询</el-button
+                    >
+                  </el-form-item>
+                </div>
+              </el-form>
+            </div>
+          </div>
+          <div class="part2">
+            <div class="part2box">
+              <div id="tips">
+                <span id="tipsinfo"
+                  >温馨提示: 请考生们务必核对好自己的个人信息，以免走错考场!
+                </span>
+              </div>
+              <div class="part2boxinfo" id="Part2boxinfo">
+                <span id="username"></span><span id="usernameSpan"></span><br />
+                <span id="usernumber"></span><span id="usernumberSpan"></span
+                ><br />
+                <span id="userclassroomnumber"></span
+                ><span id="userclassroomnumberSpan"></span><br />
+                <span id="userclassroom"></span
+                ><span id="userclassroomSpan"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        new Vue({
-            el: '#app',
+      new Vue({
+        el: "#app",
 
-            data: {
+        data: {
+          labelPosition: "right",
+          ruleForm: {
+            name: "",
+            number: "",
+          },
+          rules: {
+            name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+            number: [
+              {
+                min: 15,
+                max: 15,
+                message: "请输入正确的15位编号",
+                trigger: "blur",
+              },
+              { required: true, message: "请输入考生编号", trigger: "blur" },
+            ],
+          },
+        },
+        methods: {
+          warnTime() {
+            var date = new Date();
+            var year = date.getFullYear(); //获取当前年份
+            var month = date.getMonth() + 1; //获取当前月份
+            var dat = date.getDate(); //获取当前日
+            var hour = date.getHours(); //获取小时
+            var minutes = date.getMinutes(); //获取分钟
 
-                labelPosition: 'right',
-                ruleForm: {
-                    name: '',
-                    number: ''
-                },
-                rules: {
-                    name: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' },
-                    ],
-                    number: [
-                        { min: 15, max: 15, message: '请输入正确的15位编号', trigger: 'blur' },
-                        { required: true, message: '请输入考生编号', trigger: 'blur' },
-                    ],
+            var second = date.getSeconds(); //获取秒
+            if (hour < 10) hour = "0" + hour;
+            if (minutes < 10) minutes = "0" + minutes;
+            if (second < 10) second = "0" + aecond;
+            alert(
+              "当前时间：" +
+                year +
+                "-" +
+                month +
+                "-" +
+                dat +
+                " " +
+                "" +
+                hour +
+                ":" +
+                minutes +
+                ":" +
+                second +
+                "\n查询暂未开放！" +
+                "\n开放时间：2020-12-25 12:00:00"
+            );
+            // this.$message({
+            //     message: '当前时间：' + year+'-'+month+'-'+dat+' '+'' +hour+':'+minutes+':'+second+ "查询暂未开放！",
+            //     type: 'warning'
+            // });
+          },
+          Clear() {
+            // 反馈考生正确信息
+            var Username = document.getElementById("username");
+            var Usernumber = document.getElementById("usernumber");
+            var Userclassroomnumber = document.getElementById(
+              "userclassroomnumber"
+            );
+            var Userclassroom = document.getElementById("userclassroom");
+            var UsernameSpan = document.getElementById("usernameSpan");
+            var UsernumberSpan = document.getElementById("usernumberSpan");
+            var UserclassroomnumberSpan = document.getElementById(
+              "userclassroomnumberSpan"
+            );
+            var UserclassroomSpan = document.getElementById(
+              "userclassroomSpan"
+            );
+            Username.innerHTML = "";
+            Usernumber.innerHTML = "";
+            Userclassroomnumber.innerHTML = "";
+            Userclassroom.innerHTML = "";
+            UsernameSpan.innerHTML = "";
+            UsernumberSpan.innerHTML = "";
+            UserclassroomnumberSpan.innerHTML = "";
+            UserclassroomSpan.innerHTML = "";
+          },
+          submitForm() {
+            var date = new Date();
+            var customTime = "2020-12-25 12:00:00";
+            customTime = customTime.replace("-", "/"); //替换字符，变成标准格式
+            customTime = new Date(Date.parse(customTime));
 
-                }
-            },
-            methods: {
-                warnTime() {
-                    var date = new Date();
-                    var year = date.getFullYear(); //获取当前年份   
-                    var month = date.getMonth() + 1; //获取当前月份   
-                    var dat = date.getDate(); //获取当前日   
-                    var hour = date.getHours(); //获取小时   
-                    var minutes = date.getMinutes(); //获取分钟
+            console.log(date + " " + customTime);
 
-                    var second = date.getSeconds(); //获取秒 
-                    if (hour < 10) hour = "0" + hour;
-                    if (minutes < 10) minutes = "0" + minutes;
-                    if (second < 10) second = "0" + aecond;
-                    alert('当前时间：' + year + '-' + month + '-' + dat + ' ' + '' + hour + ':' + minutes + ':' + second + "。查询暂未开放！");
-                    // this.$message({
-                    //     message: '当前时间：' + year+'-'+month+'-'+dat+' '+'' +hour+':'+minutes+':'+second+ "。查询暂未开放！",
-                    //     type: 'warning'
-                    // });
-
-                },
-                Clear() {
-                   
-
-                    // 反馈考生正确信息
-                    var Username = document.getElementById("username");
-                    var Usernumber = document.getElementById("usernumber");
-                    var Userclassroomnumber = document.getElementById("userclassroomnumber");
-                    var Userclassroom = document.getElementById("userclassroom");
-                    var UsernameSpan = document.getElementById("usernameSpan");
-                    var UsernumberSpan = document.getElementById("usernumberSpan");
-                    var UserclassroomnumberSpan = document.getElementById(
-                        "userclassroomnumberSpan"
-                    );
-                    var UserclassroomSpan = document.getElementById("userclassroomSpan");
-                    Username.innerHTML = "";
-                    Usernumber.innerHTML = "";
-                    Userclassroomnumber.innerHTML = "";
-                    Userclassroom.innerHTML = "";
-                    UsernameSpan.innerHTML = "";
-                    UsernumberSpan.innerHTML = "";
-                    UserclassroomnumberSpan.innerHTML = "";
-                    UserclassroomSpan.innerHTML = "";
-                },
-                submitForm() {
-                    var date = new Date();
-                    var customTime = "2020-12-25 12:00:00";
-                    customTime = customTime.replace("-", "/");//替换字符，变成标准格式  
-                    customTime = new Date(Date.parse(customTime));
-
-
-                    console.log(date + " " + customTime);
-
-                    if (date > customTime) {
-                    //if (true) {
-                        axios.post('http://101.132.192.32/queExaminationHall', {
-                            candidateName: this.ruleForm.name,
-                            candidateNumber: this.ruleForm.number
-                        })
-                            .then(res => {
-                                console.log(res.data);
-                                if (res.data.code == 1) {//成功查询数据
-                                    //document.getElementById("information").innerHTML = res.data.data;
-                                    document.getElementById("Part2boxinfo").className ="part2boxinfo-active";
-                                    document.getElementById("username").innerHTML = "考生姓名：";
-                                    document.getElementById("usernameSpan").innerHTML = this.ruleForm.name;
-                                    document.getElementById("usernumber").innerHTML = "考生编号：";
-                                    document.getElementById("usernumberSpan").innerHTML = this.ruleForm.number;
-                                    document.getElementById("userclassroomnumber").innerHTML = "考场号：";
-                                    document.getElementById("userclassroomnumberSpan").innerHTML = res.data.data.examinationAreaId;
-                                    document.getElementById("userclassroom").innerHTML = "教室号：";
-                                    document.getElementById("userclassroomSpan").innerHTML = res.data.data.examinationHallId;
-
-                                } else if (res.data.code == 0) {
-                                    alert(res.data.errMessage);
-                                    this.Clear();
-                                    document.getElementById("Part2boxinfo").className ="Part2boxinfo";
-                                    
-                                    
-                                } else if (res.data.code == 2) {
-                                    this.warnTime();
-                                    this.Clear();
-                                    document.getElementById("Part2boxinfo").className ="Part2boxinfo";
-                                }
-
-                            })
-                            .catch(err => {
-                                console.log(err)
-                            });
-                    } else {
-                        this.warnTime();
-
-                    }
-
-                },
+            if (date > customTime) {
+              //if (true) {
+              axios
+                .post("http://101.132.192.32/queExaminationHall", {
+                  candidateName: this.ruleForm.name,
+                  candidateNumber: this.ruleForm.number,
+                })
+                .then((res) => {
+                  console.log(res.data);
+                  if (res.data.code == 1) {
+                    //成功查询数据
+                    //document.getElementById("information").innerHTML = res.data.data;
+                    document.getElementById("Part2boxinfo").className =
+                      "part2boxinfo-active";
+                    document.getElementById("username").innerHTML =
+                      "考生姓名：";
+                    document.getElementById(
+                      "usernameSpan"
+                    ).innerHTML = this.ruleForm.name;
+                    document.getElementById("usernumber").innerHTML =
+                      "考生编号：";
+                    document.getElementById(
+                      "usernumberSpan"
+                    ).innerHTML = this.ruleForm.number;
+                    document.getElementById("userclassroomnumber").innerHTML =
+                      "考场号：";
+                    document.getElementById(
+                      "userclassroomnumberSpan"
+                    ).innerHTML = res.data.data.examinationAreaId;
+                    document.getElementById("userclassroom").innerHTML =
+                      "教室号：";
+                    document.getElementById("userclassroomSpan").innerHTML =
+                      res.data.data.examinationHallId;
+                  } else if (res.data.code == 0) {
+                    alert(res.data.errMessage);
+                    this.Clear();
+                    document.getElementById("Part2boxinfo").className =
+                      "Part2boxinfo";
+                  } else if (res.data.code == 2) {
+                    this.warnTime();
+                    this.Clear();
+                    document.getElementById("Part2boxinfo").className =
+                      "Part2boxinfo";
+                  }
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            } else {
+              this.warnTime();
             }
-        })
+          },
+        },
+      });
     </script>
-</body>
-
+  </body>
 </html>
