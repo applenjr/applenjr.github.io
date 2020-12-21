@@ -156,8 +156,8 @@
 
                     console.log(date + " " + customTime);
 
-                    //if (date > customTime) {
-                    if (true) {
+                    if (date > customTime) {
+                    //if (true) {
                         axios.post('http://101.132.192.32/queExaminationHall', {
                             candidateName: this.ruleForm.name,
                             candidateNumber: this.ruleForm.number
