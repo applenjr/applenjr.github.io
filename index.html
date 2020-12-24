@@ -25,7 +25,7 @@
   <body onload="Show()">
     <div id="app">
       <div class="container">
-        <div class="text" @dblclick="Test">
+        <div class="text">
           <p>全国硕士研究生招生考试</p>
           <p>南京邮电大学考点 (3226) 考场查询</p>
         </div>
@@ -97,11 +97,9 @@
 
     <script>
       function Show() {
-        console.log("aaa");
         axios
           .post("http://101.132.192.32/teacher/queRequestCounter")
           .then((res) => {
-            console.log(res);
             document.getElementById("Browse").innerText = res.data.data;
           });
       }
@@ -128,9 +126,6 @@
           },
         },
         methods: {
-          Test() {
-            window.location.replace("./Pages/Login.html");
-          },
           warnTime() {
             var date = new Date();
             var year = date.getFullYear(); //获取当前年份
@@ -206,7 +201,7 @@
                   candidateNumber: this.ruleForm.number,
                 })
                 .then((res) => {
-                  console.log(res.data);
+                  // console.log(res.data);
                   if (res.data.code == 1) {
                     //成功查询数据
                     //document.getElementById("information").innerHTML = res.data.data;
