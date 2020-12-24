@@ -22,7 +22,7 @@
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   </head>
 
-  <body>
+  <body onload="Show()">
     <div id="app">
       <div class="container">
         <div class="text" @dblclick="Test">
@@ -34,6 +34,7 @@
             <div class="njuptlogo">
               <img src="./NJUPT.png" alt="NJUPT" width="120px" height="120px" />
             </div>
+            <div class="Browses">总访问量：<span id="Browse"></span></div>
             <div class="user">
               <el-form
                 :rules="rules"
@@ -95,6 +96,15 @@
     </div>
 
     <script>
+      function Show() {
+        console.log("aaa");
+        axios
+          .post("http://101.132.192.32/teacher/queRequestCounter")
+          .then((res) => {
+            console.log(res);
+            document.getElementById("Browse").innerText = res.data.data;
+          });
+      }
       new Vue({
         el: "#app",
 

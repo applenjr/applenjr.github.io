@@ -37,7 +37,15 @@
   justify-content: center;
   align-items: center;
 }
-
+.container .box .part1 .Browses {
+  font-size: 15px;
+  color: #d0d0d0;
+  margin: 20px;
+}
+.container .box .part1 #Browse {
+  color: #666;
+  font-weight: bold;
+}
 .el-input__inner {
   border-radius: 20px;
   width: 300px;
